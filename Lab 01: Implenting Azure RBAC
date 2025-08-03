@@ -1,0 +1,19 @@
+# Lab 01: Implementing Azure RBAC
+
+## 🎯 Objective
+Configure role-based access control (RBAC) in Azure to assign least-privilege roles to users.
+
+## 🛠 Steps Taken
+1. Created a new Azure AD user.
+2. Assigned a custom role using Azure RBAC.
+3. Verified role permissions with Azure CLI.
+
+## 📸 Screenshots
+(Add relevant screenshots here)
+
+## 📚 Key Learnings
+- How RBAC enforces least privilege in Azure.
+- Difference between built-in and custom roles.
+
+## 🔗 References
+- [MicrosoftLearning Lab 01 Guide](https://microsoftlearning.github.io/AZ500-AzureSecurityTechnologies/)
