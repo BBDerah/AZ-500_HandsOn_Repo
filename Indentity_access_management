@@ -1,0 +1,3 @@
+# PowerShell Example: Create Azure AD user
+# Connect-AzureAD
+# New-AzureADUser -DisplayName 'Test User' -UserPrincipalName 'testuser@domain.com' -AccountEnabled $true
