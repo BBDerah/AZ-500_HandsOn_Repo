@@ -1,3 +1,5 @@
-# PowerShell Example: Create Azure AD user
-# Connect-AzureAD
-# New-AzureADUser -DisplayName 'Test User' -UserPrincipalName 'testuser@domain.com' -AccountEnabled $true
+Create a Senior Admins group containing the user account of Joseph Price as its member.
+Create a Junior Admins group containing the user account of Isabel Garcia as its member.
+Create a Service Desk group containing the user account of Dylan Williams as its member.
+Assign the Virtual Machine Contributor role to the Service Desk group.
+
