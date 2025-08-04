@@ -2,14 +2,63 @@
 
 ## 🎯 Objective
 Configure role-based access control (RBAC) in Azure to assign least-privilege roles to users.
+Exercise 1: Create the Senior Admins group with the user account Joseph Price as its member (the Azure portal).
+Exercise 2: Create the Junior Admins group with the user account Isabel Garcia as its member (PowerShell).
+Exercise 3: Create the Service Desk group with the user Dylan Williams as its member (Azure CLI).
+Exercise 4: Assign the Virtual Machine Contributor role to the Service Desk group.
 
-## 🛠 Steps Taken
-1. Created a new Azure AD user.
-2. Assigned a custom role using Azure RBAC.
-3. Verified role permissions with Azure CLI.
+## 🛠 Steps Taken (task 1)
+1. Created a new Azure AD user - Joseph Price
+2. Created a new Azure AD group - Senior Admin
+3. Made Joseph Price the owner, as well as a member of the Senior Admin group
 
 ## 📸 Screenshots
-(Add relevant screenshots here)
+(Add relevant screenshots here) 
+
+## 🛠 Steps Taken (task 2)
+1. Created a new Azure AD user using powershell - Isabel Garcia
+. $passwordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
+. $passwordProfile.Password = "Pa55w.rd1234"
+. Connect-AzureAD
+. $domainName = ((Get-AzureAdTenantDetail).VerifiedDomains)[0].Name
+. New-AzureADUser -DisplayName 'Isabel Garcia' -PasswordProfile $passwordProfile -UserPrincipalName "Isabel@$domainName" -AccountEnabled $true -MailNickName 'Isabel'
+2. Created a new Azure AD group using powershell - JuniorAdmins
+. New-AzureADGroup -DisplayName 'JuniorAdmins' -MailEnabled $false -SecurityEnabled $true -MailNickName JuniorAdmins
+. Get-AzureADGroup
+3. Added user (Isabel Garcia) to Group (JuniorAdmins)
+. Add-AzADGroupMember -MemberUserPrincipalName Isabel@44356.onmicrosoft.com -TargetGroupDisplayName JuniorAdmins
+. Get-AzADGroupMember -GroupDisplayName JuniorAdmins
+
+## 📸 Screenshots
+(Add relevant screenshots here) 
+
+## 🛠 Steps Taken (task 3)
+1. Created a new Azure AD user using Azure CLI - Dylan Williams
+. DOMAINNAME=$(az ad signed-in-user show --query 'userPrincipalName' | cut -d '@' -f 2 | sed 's/\"//')
+. az ad user create --display-name "Dylan Williams" --password "Pa55w.rd1234" --user-principal-name Dylan@$DOMAINNAME
+. az ad user list --output table
+2.  USER=$(az ad user list --filter "displayname eq 'Dylan Williams'")
+. OBJECTID=$(echo $USER | jq '.[].id' | tr -d '"')
+. az ad group member add --group "Service Desk" --member-id $OBJECTID
+. az ad group member list --group "Service Desk"
+
+## 📸 Screenshots
+(Add relevant screenshots here) 
+
+## 🛠 Steps Taken (task 4)
+1.Created a resource group.
+.Resource Group Name - AZ500Lab01. Location - East US
+2. Assigned the Service Desk Virtual Machine Contributor permissions.
+.On the Resource groups, selected the AZ500LAB01 resource group entry.
+.On the AZ500Lab01 blade, selected Access control (IAM) in the middle pane.
+.On the AZ500Lab01 | Access control (IAM) blade, clicked + Add and then, in the drop-down menu, clicked Add role assignment.
+.Role - Virtual Machine Contributor. Assigned Access to Service Desk
+.Viewed the check access tab on the AZ500Lab01 Access Control and searched for Dylan Williams, to confirm the assignment.
+
+## 🛠 Steps Taken (task 5)
+1. Deleted the resource group created in the lab
+. Opened Powershell
+.Remove-AZResourceGroup -Name "AZ500LAB01" -Force -AsJob
 
 ## 📚 Key Learnings
 - How RBAC enforces least privilege in Azure.
