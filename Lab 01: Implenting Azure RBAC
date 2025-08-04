@@ -30,10 +30,7 @@ Screenshot (4).png
 . Get-AzureADGroup
 3. Added user (Isabel Garcia) to Group (JuniorAdmins)
 . Add-AzADGroupMember -MemberUserPrincipalName Isabel@44356.onmicrosoft.com -TargetGroupDisplayName JuniorAdmins
-. Get-AzADGroupMember -GroupDisplayName JuniorAdmins
-
-## 📸 Screenshots
-(Add relevant screenshots here) 
+. Get-AzADGroupMember -GroupDisplayName JuniorAdmins 
 
 ## 🛠 Steps Taken (task 3)
 1. Created a new Azure AD user using Azure CLI - Dylan Williams
@@ -46,7 +43,7 @@ Screenshot (4).png
 . az ad group member list --group "Service Desk"
 
 ## 📸 Screenshots
-(Add relevant screenshots here) 
+Screenshot (5).png
 
 ## 🛠 Steps Taken (task 4)
 1.Created a resource group.
@@ -57,6 +54,11 @@ Screenshot (4).png
 .On the AZ500Lab01 | Access control (IAM) blade, clicked + Add and then, in the drop-down menu, clicked Add role assignment.
 .Role - Virtual Machine Contributor. Assigned Access to Service Desk
 .Viewed the check access tab on the AZ500Lab01 Access Control and searched for Dylan Williams, to confirm the assignment.
+
+## 📸 Screenshots
+Screenshot (6).png
+Screenshot (7).png
+Screenshot (8).png
 
 ## 🛠 Steps Taken (task 5)
 1. Deleted the resource group created in the lab
